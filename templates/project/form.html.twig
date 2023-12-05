@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body  %}
+	<div class="text_secondary">
+		{{parent()}}
+		{{form_start(form, {"attr": {"novalidate": "novalidate"}})}}
+		{{form_row(form)}}
+		{{form_rest(form)}}
+		<input type="submit" value="Créer" class="btn btn_success border-black">
+		{{form_end(form)}}
+	</div>
+{% endblock %}
