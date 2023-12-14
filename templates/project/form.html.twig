@@ -1,12 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body  %}
-	<div class="text_secondary">
+	<div class="container">
 		{{parent()}}
-		{{form_start(form, {"attr": {"novalidate": "novalidate"}})}}
-		{{form_row(form)}}
-		{{form_rest(form)}}
-		<input type="submit" value="Créer" class="btn btn_success border-black">
+		<div>
+			{{form_start(form, {"attr": {"novalidate": "novalidate", "class": "text-white"}})}}
+			{{form_row(form)}}
+			{{form_rest(form)}}
+		</div>
+		<input type="submit" value="Ajouter le projet" class="btn btn-outline-light">
 		{{form_end(form)}}
 	</div>
 {% endblock %}

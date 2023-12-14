@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjectController extends AbstractController{
     #[Route("/project/create", name:"create")]
     function create(Request $request, ManagerRegistry $doctrine) : Response{
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $project =  new EntityProject();
         $form = $this->createform(ProjectType::class, $project);
         $form->handleRequest($request);

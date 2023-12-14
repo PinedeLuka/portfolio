@@ -18,7 +18,6 @@ class AppFixtures extends Fixture
         $user = new User($this->passwordHasher);
         $user->setUsername("test")->setPassword('1234');
         $manager->persist($user);
-
         $manager->flush();
     }
 }

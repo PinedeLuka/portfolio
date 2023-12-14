@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="d-flex flex-column justify-content-between vh-100 container">
+	<div class="d-flex align-items-center justify-content-center vh-100">
+		<div class="row">
+			<h1 class="display-5 text-secondary text-center">I'm a designer specialising in
+				<span class=" display-5 fw-bold text-light">
+					UI/UX</span>
+				<span class="display-5 text-secondary">and
+				</span>
+				<span class="display-5 fw-bold text-light"><br>
+					Interaction Design</span>
+			</h1>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center pb-5 mb-5">
+		<a href="#otherClient"><img alt="fleche" src=".\images\chevron-down.png"></a>
+	</div>
+</div>
+<div class="container" id="otherClient">
+	<div class="row">
+		<h1 class="display-5 text-secondary mt-5">Some of
+			<span class="display-5 text-light fw-bold my-5">the clients I have
+				<br>
+				designed for</span>
+		</h1>
+	</div>
+	<div class="row my-5 py-5">
+		<div class="col-lg-3 my-4">
+			<a href="https://www.airbnb.fr"><img alt="airbnb" src=".\images\Airbnb Logo.png" class="img-fluid"></a>
+		</div>
+		<div class="col-lg-3 my-4">
+			<a href="https://google.com"><img alt="google" src=".\images\Google Logo.png" class="img-fluid"></a>
+		</div>
+		<div class="col-lg-3 my-4">
+			<a href="https://www.microsoft.com/fr-fr"><img alt="microsoft" src=".\images\Microsoft Logo.png" class="img-fluid"></a>
+		</div>
+		<div class="col-lg-3 my-4">
+			<a href="https://www.fedex.com/fr-fr/home.html"><img alt="fedex" src=".\images\g15.png" class="img-fluid"></a>
+		</div>
+	</div>
+</div>
+{% endblock %}
