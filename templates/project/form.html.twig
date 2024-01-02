@@ -8,7 +8,19 @@
 			{{form_row(form)}}
 			{{form_rest(form)}}
 		</div>
-		<input type="submit" value="Ajouter le projet" class="btn btn-outline-light">
+		{% if app.request.get('_route')=='create' %}
+			<input type="submit" value="Add Project" class="btn btn-outline-light">
+		{% else %}
+			<input type="submit" value="Edit Project" class="btn btn-outline-light">
+		{% endif %}
+
+
 		{{form_end(form)}}
 	</div>
+{% endblock %}
+{% block img_footer %}
+	<a href="#"><img src="\images\Mail.png" alt="lien mail" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\Behance.png" alt="lien" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\Dribble.png" alt="lien site" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\LinkedIn.png" alt="lien linkedIn" class="img-fluid"></a>
 {% endblock %}

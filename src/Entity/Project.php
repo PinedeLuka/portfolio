@@ -11,7 +11,7 @@ use PhpParser\ErrorHandler\Collecting;
 #[ORM\Entity()]
 class Project{
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy:"AUTO")]
+    #[ORM\GeneratedValue(strategy:"AUTO")]  
     #[ORM\Column()]
     private int $id;
     #[ORM\Column()]
@@ -26,7 +26,10 @@ class Project{
     #[Assert\NotBlank(message : ("La date ne peut pas être vide"))]
     private $date;
     #[ORM\OneToMany(targetEntity:"App\Entity\Skill", mappedBy:"Project")]
-    private Collection $skills;
+    private Collection $skills; 
+
+    #[ORM\Column(type: 'string')]
+    private string $brochureFilename = "";
 
     public function __construct()
     {
@@ -89,6 +92,18 @@ class Project{
     public function setSkills(Collection $skills): self
     {
         $this->skills = $skills;
+
+        return $this;
+    }
+
+    public function getBrochureFilename(): string
+    {
+        return $this->brochureFilename;
+    }
+
+    public function setBrochureFilename(string $brochureFilename): self
+    {
+        $this->brochureFilename = $brochureFilename;
 
         return $this;
     }

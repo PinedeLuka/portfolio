@@ -1,5 +1,43 @@
 {% extends "base.html.twig" %}
+{% block Work %}
+	<a class="active px-3 nav-link" aria-current="page" href="/project/read" style="color: #BC3CD8;">Work</a>
+{% endblock %}
+
 
 {% block body %}
-    <div class="d-flex flex-column justify-content-between ">
-    
+	<body>
+		<div class="container">
+			<div class="row my-5 pt-5">
+				<h1 class="display-5 text-secondary">Selected
+					<span class="display-6 text-light fw-bold">Works</span>
+				</h1>
+			</div>
+			{% for project in projects %}
+				<div class="row mb-5">
+					<div class="col-lg">
+						<img alt="projet 1" class="img-fluid" src="{{asset('uploads/brochures/' ~ project.brochurefilename)}}">
+					</div>
+					<div class="col-lg d-flex align-items-end">
+						<span>
+							<p class="fw-bold text-light lead">{{project.name}}</p>
+							<h1 class="display-6 text-secondary ">{{project.description}}</h1>
+							<p class="text-secondary">{{project.date| date("d/m/Y")}}</p>
+							<a href="#" type="button" class="btn btn-outline-light mt-4">View work ></a>
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<a href="/project/edit/{{project.id}}" type="button" class="btn btn-warning mt-4 ms-sm-4">Edit</a>
+								<a href="/project/delete/{{project.id}}" type="button" class="btn btn-danger mt-4 ms-sm-4">Delete</a>
+							{% endif %}
+						</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</body>
+	{% endblock %}
+	
+	{% block img_footer %}
+		<a href="#"><img src="..\images\Mail.png" alt="lien mail" class="img-fluid me-5"></a>
+		<a href="#"><img src="..\images\Behance.png" alt="lien" class="img-fluid me-5"></a>
+		<a href="#"><img src="..\images\Dribble.png" alt="lien site" class="img-fluid me-5"></a>
+		<a href="#"><img src="..\images\LinkedIn.png" alt="lien linkedIn" class="img-fluid"></a>
+	{% endblock %}
