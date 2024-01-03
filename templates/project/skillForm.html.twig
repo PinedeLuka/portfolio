@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body  %}
+	<div class="container">
+		{{parent()}}
+		<div>
+			{{form_start(form, {"attr": {"novalidate": "novalidate", "class": "text-white"}})}}
+			{{form_row(form)}}
+			{{form_rest(form)}}
+		</div>
+		{% if app.request.get('_route')=='skillcreate' %}
+			<input type="submit" value="Add skill" class="btn btn-outline-light">
+		{% else %}
+			<input type="submit" value="Edit skill" class="btn btn-outline-light">
+		{% endif %}
+
+
+		{{form_end(form)}}
+	</div>
+{% endblock %}
+{% block img_footer %}
+	<a href="#"><img src="\images\Mail.png" alt="lien mail" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\Behance.png" alt="lien" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\Dribble.png" alt="lien site" class="img-fluid me-5"></a>
+	<a href="#"><img src="\images\LinkedIn.png" alt="lien linkedIn" class="img-fluid"></a>
+{% endblock %}

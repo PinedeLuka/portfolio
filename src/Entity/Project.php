@@ -15,15 +15,15 @@ class Project{
     #[ORM\Column()]
     private int $id;
     #[ORM\Column()]
-    #[Assert\NotBlank(message:"Le nom ne peut pas être vide")]
-    #[Assert\Length(min : 5,max : 70, minMessage:("Le nom est trop court"), maxMessage:("Le nom est trop long"))]
+    #[Assert\NotBlank(message:"The name can't be empty")]
+    #[Assert\Length(min : 5,max : 70, minMessage:("The name is too short"), maxMessage:("The name is too long"))]
     private string $name;
     #[ORM\Column(type:"text")]
-    #[Assert\NotBlank(message:"La description ne peut pas être vide")]
-    #[Assert\Length(min : 10, max : 300, minMessage : ("La description est trop courte"), maxMessage : ("La description est trop longue"))]
+    #[Assert\NotBlank(message:"The description can't be empty")]
+    #[Assert\Length(min : 10, max : 300, minMessage : ("The description is too short"), maxMessage : ("The description is too long"))]
     private string $description;
     #[ORM\Column(type:"date")]
-    #[Assert\NotBlank(message : ("La date ne peut pas être vide"))]
+    #[Assert\NotBlank(message : ("Date can't be empty"))]
     private $date;
     #[ORM\OneToMany(targetEntity:"App\Entity\Skill", mappedBy:"Project")]
     private Collection $skills; 
