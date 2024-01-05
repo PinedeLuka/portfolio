@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\ErrorHandler\Collecting;
 
-#[ORM\Entity()]
+#[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project{
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy:"AUTO")]  
@@ -104,6 +106,16 @@ class Project{
     public function setBrochureFilename(string $brochureFilename): self
     {
         $this->brochureFilename = $brochureFilename;
+
+        return $this;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setProject($this);
+        }
 
         return $this;
     }

@@ -4,14 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Repository\ProjectRepository;
 use App\Service\FileUploader;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectController extends AbstractController
@@ -75,9 +76,9 @@ class ProjectController extends AbstractController
     public function read(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(Project::class);
-        $projects = $repository->findAll();
+        $projects = $repository->findby([], ['date' => 'ASC']);
         return $this->render("project/Work.html.twig", [
-            "projects" => $projects
+            "projects" => $projects,
         ]);
     }
 }

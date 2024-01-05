@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body  %}
+    {% if app.request.method == 'POST' %}
+        <div>
+            {% if projects | length ==0 %}
+                <div class="container d-flex justify-content-center align-content-center my-5 py-5">
+                    <div class="row my-5 py-5">
+                        <h1 class="display-6 text-secondary my-5">No result</h1>
+                    </div>
+                </div>
+            {% else %}
+                <div class="container">
+                    <h1 class="display-6 text-white">All your results</h1>
+                    {% for project in projects %}
+                        <div class="row mb-5">
+                            <div class="col-lg">
+                                <img alt="projet 1" class="img-fluid" src="{{asset('uploads/brochures/' ~ project.brochurefilename)}}">
+                            </div>
+                            <div class="col-lg d-flex align-items-end">
+                                <span>
+                                    <p class="fw-bold text-light lead">{{project.name}}</p>
+                                    <h1 class="display-6 text-secondary ">{{project.description}}</h1>
+                                    <p class="text-secondary">{{project.date| date("d/m/Y")}}</p>
+                                    <a href="#" type="button" class="btn btn-outline-light mt-4">View work ></a>
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <a href="/project/edit/{{project.id}}" type="button" class="btn btn-warning mt-4 ms-sm-4">Edit</a>
+                                        <a href="/project/delete/{{project.id}}" type="button" class="btn btn-danger mt-4 ms-sm-4">Delete</a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
